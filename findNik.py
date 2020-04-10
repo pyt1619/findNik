@@ -6,10 +6,8 @@ nik = input("никнейм\n")
 sherlock_zapros+=nik
 snoop_zapros+=nik
 
-tor = input("Использовать сеть тор?(Y/n)\n") 
-if tor == "n" or tor == "N" or tor == "NO" or tor == 'no':
-	pass
-else:	
+tor = input("Использовать сеть тор?(N/y)\n") 
+if tor == "y" or tor == "Y" or tor == "YES" or tor == 'yes':
 	unique_tor = input("Изменять узел при каждом проходе?(N/y)\n") 
 	if unique_tor == 'y' or unique_tor == 'Y' or unique_tor == 'YSE' or unique_tor == 'yes':
 		sherlock_zapros+=" "+"--unique-tor"
@@ -35,8 +33,8 @@ os.system(saioj)
 cp="cd ; cd snoop/results/txt; cp "+nik+".txt "+pwd
 cp=cp.strip()+"/snoop.txt"
 os.system(cp)
-print(cp)
-
+print("snoop завершил свою работу!")
+os.system("cat snoop.txt | grep Запрашиваемый")
 print("-"*len("| Поиск завершен успешно! |")+"\n| Поиск завершен успешно! |\n"+"-"*len("| Поиск завершен успешно! |"))
 print("поиск дублей и обединение файлов")
 os.system("cat snoop.txt | grep http > "+nik+".txt")
@@ -59,3 +57,6 @@ for i in range(len(strings)):
 sort="cat "+file+" | sort | uniq > vremenny_file.txt"
 os.system(sort)
 os.system("mv vremenny_file.txt "+file)
+with open (file,'r') as f:
+	string = f.read().splitlines()
+print("Филтрация завершена успешно!\nСоздан файл "+str(file)+" по пути "+str(pwd)+"\nОбщее число результатов после фильтрации "+str(len(string)))
