@@ -1,4 +1,51 @@
 import os
+BannerStart="""
+
+
+
+
+ ▄▄▄▄▄▄                        ▄▄▄   ▄▄     ██     ▄▄       
+ ██▀▀▀▀█▄                      ███   ██     ▀▀     ██       
+ ██    ██  ▀██  ███            ██▀█  ██   ████     ██ ▄██▀  
+ ██████▀    ██▄ ██             ██ ██ ██     ██     ██▄██    
+ ██          ████▀             ██  █▄██     ██     ██▀██▄   
+ ██           ███              ██   ███  ▄▄▄██▄▄▄  ██  ▀█▄  
+ ▀▀           ██               ▀▀   ▀▀▀  ▀▀▀▀▀▀▀▀  ▀▀   ▀▀▀ 
+            ███   
+
+	 ▄▄▄▄▄▄▄▄     ██                     ▄▄ 
+	 ██▀▀▀▀▀▀     ▀▀                     ██ 
+	 ██         ████     ██▄████▄   ▄███▄██ 
+	 ███████      ██     ██▀   ██  ██▀  ▀██ 
+	 ██           ██     ██    ██  ██    ██ 
+	 ██        ▄▄▄██▄▄▄  ██    ██  ▀██▄▄███ 
+	 ▀▀        ▀▀▀▀▀▀▀▀  ▀▀    ▀▀    ▀▀▀ ▀▀ 
+		 
+
+
+		         """
+BannerEnd = """ 
+
+
+▄▄      ▄▄                     ▄▄       
+██      ██                     ██       
+▀█▄ ██ ▄█▀  ▄████▄    ██▄████  ██ ▄██▀  
+ ██ ██ ██  ██▀  ▀██   ██▀      ██▄██    
+ ███▀▀███  ██    ██   ██       ██▀██▄   
+ ███  ███  ▀██▄▄██▀   ██       ██  ▀█▄  
+ ▀▀▀  ▀▀▀    ▀▀▀▀     ▀▀       ▀▀   ▀▀▀  
+
+   ▄▄▄▄      ██                         ▄▄▄▄     
+  ██▀▀▀      ▀▀                         ▀▀██     
+███████    ████     ██▄████▄   ▄█████▄    ██     
+  ██         ██     ██▀   ██   ▀ ▄▄▄██    ██     
+  ██         ██     ██    ██  ▄██▀▀▀██    ██     
+  ██      ▄▄▄██▄▄▄  ██    ██  ██▄▄▄███    ██▄▄▄  
+  ▀▀      ▀▀▀▀▀▀▀▀  ▀▀    ▀▀   ▀▀▀▀ ▀▀     ▀▀▀▀  
+                                      
+
+"""
+print(BannerStart)
 sherlock_zapros = "sherlock "
 snoop_zapros="python3 snoop.py -t 9 "
 nik = input("никнейм\n")
@@ -42,10 +89,13 @@ for i in range(len(strings)):
 		pass
 for i in range(len(strings)):
 	os.system("echo "+strings[i]+" >> "+file)
-
 sort="cat "+file+" | sort | uniq > vremenny_file.txt"
 os.system(sort)
 os.system("mv vremenny_file.txt "+file)
 with open (file,'r') as f:
 	string = f.read().splitlines()
+print(BannerEnd)
+
 print('-'*len("| Общее число результатов после фильтрации "+str(len(string))+" |")+"\n| Филтрация завершена успешно! \n| Создан файл "+str(file)+" по пути "+str(pwd).strip()+" \n| Общее число результатов после фильтрации "+str(len(string))+" \n"+'-'*len("| Общее число результатов после фильтрации "+str(len(string))+" |"))
+os.system("firefox file:///root/snoop/results/html/"+nik+".html &")
+exit(1)
